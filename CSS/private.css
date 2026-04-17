@@ -45,10 +45,35 @@ h4 {
 	color:#C00000;
 	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
-.courierfont{
+ /* 1. 使用CSS计数器（counter-reset 和 counter-increment）来生成序号。 */
+  /* 通过伪元素::before插入自定义的序号内容，包括Unicode表情符号"️⃣"。 */
+   /* 3. 利用position定位确保序号正确显示在列表项前。 */
+ol {
+	counter-reset: step;
+    list-style: none;
+    padding-left: 0;
+}
+
+ol li {
+    counter-increment: step;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 5px;
+}
+
+ol li::before {
+    content: counter(step) "️⃣";
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+:is(p) span {
+	font-size: 0.8rem;
+	font-weight:bold;
 	color: blue;
 	font-family: "Courier New";
-}
+	}
+
 .LR{
 	display: flex;
 	align-items: center;
@@ -96,7 +121,7 @@ hr {
 	flex-direction: column;
 	justify-content: center;
 	cursor: pointer;
-	font-size: clamp(12px, 0.92vw, 16px);
+	font-size: clamp(13px, 0.92vw, 16px);
 	height: 2rem;
 	transition: transform 0.2s, box-shadow 0.2s;
 	border:1px solid #CCC;
