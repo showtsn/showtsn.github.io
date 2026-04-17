@@ -121,7 +121,7 @@ hr {
 	flex-direction: column;
 	justify-content: center;
 	cursor: pointer;
-	font-size: clamp(13px, 0.92vw, 16px);
+	font-size: clamp(14px, 0.92vw, 16px);
 	height: 2rem;
 	transition: transform 0.2s, box-shadow 0.2s;
 	border:1px solid #CCC;
