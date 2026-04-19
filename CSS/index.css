@@ -1,0 +1,212 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Microsoft YaHei UI Light';
+}
+
+body {
+	background-image:url('../img/oldcolor.png');
+	padding: 10px;       /* 如果是0，为删除外边距，body可上顶格 */
+	font-size:62.5%;
+	color: #333;
+}
+h4 {
+	padding:3px;
+	border-radius: 5px;
+	text-indent: 20px;
+	color:#C00000;
+	background: linear-gradient(to right,
+		#B3E5A1 15%,
+		#DAF2D1 30%,
+		hsla(80,60%,80%, 0) 70%);
+	}
+.container {
+	max-width: 75%;
+	margin: 0 auto;
+}
+
+.header {
+	position:relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.header img{
+	max-width: 100%;
+	height: auto;
+}
+.topleft {
+    position: absolute;
+    top:3%;
+    left:10%;
+	font-size: 1rem;
+	font-weight:bold;
+	color:#C00000;
+	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+ /* 1. 使用CSS计数器（counter-reset 和 counter-increment）来生成序号。 */
+  /* 通过伪元素::before插入自定义的序号内容，包括Unicode表情符号"️⃣"。 */
+   /* 3. 利用position定位确保序号正确显示在列表项前。 */
+ol {
+	counter-reset: step;
+    list-style: none;
+    padding-left: 0;
+}
+
+ol li {
+    counter-increment: step;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 5px;
+}
+
+ol li::before {
+    content: counter(step) "️⃣";
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+:is(p) span {
+	font-size: 0.8rem;
+	font-weight:bold;
+	color: #0044AA;
+	}
+
+.LR{
+	display: flex;
+	align-items: center;
+	color: #002EA6;
+}
+.circleimg{
+	max-width:52px;
+	height: auto;
+}
+hr {
+	border-top: 1px solid orange;
+}
+.titlebox1 {
+	grid-column: span 7;
+	color: #C00000;
+	border-radius: 6px;
+	font-size:1.2rem;
+	font-weight: bold;
+}
+.titlebox2 {
+	grid-column: span 2;
+	color: #C00000;
+	border-radius: 6px;
+	font-size:1.2rem;
+	font-weight: bold;
+}
+.schedule {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
+	row-gap: 0.25rem;
+	column-gap: 0.8rem;
+	background-color: #E7FFFF;
+	padding: 15px;
+	border-radius: 10px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+.website {
+	background-color: white;
+	margin-left:0;
+	margin-right:0;
+	padding: 0.3rem;
+	border-radius: 6px;
+	max-height: 1.75rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	cursor: pointer;
+	font-size: clamp(14px, 0.92vw, 16px);
+	height: 2rem;
+	transition: transform 0.2s, box-shadow 0.2s;
+	border:1px solid #CCC;
+	overflow: hidden;
+}
+.website:hover {
+	background-color: #FFCC66;
+	transform: translateY(-3px);
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+.website a {
+	color:#0044AA;
+	text-decoration: none;
+}
+.website-name {
+	font-weight: bold;
+	margin-bottom: 2px;
+	margin-left: 10px;
+}
+.website-name a:hover{
+	color:#C00000;
+}
+.arrange {
+	display: grid;
+	margin-top:10px;
+	grid-template-columns: 1fr,1fr;
+	row-gap: 0.3rem;
+	column-gap: 0;
+	background-color: #EFFFEF;
+	padding: 10px;
+	border-radius: 10px;
+	box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+.affair {
+	padding: 1rem;
+	border-radius: 6px;
+	display: flex;
+	flex-direction: column;
+	font-size: 0.875rem;
+	transition: transform 0.2s, box-shadow 0.2s;
+}
+.cardTin{
+	margin-bottom: 20px;
+	background-color: white;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+	line-height: 1.5rem;
+	letter-spacing:1px;
+	font-size:0.8rem;
+	font-weight:bold;
+}
+.font1{
+	font-family: "Courier New";
+	letter-spacing:-0.5px;
+	font-weight:400;
+}
+
+@media (max-width: 950px) {
+	.container {
+	max-width: 100%;
+}
+
+  .header img {
+    content: url('../img/title-pri.png'); /* 小尺寸图片 */
+  }
+
+	.schedule {
+		grid-template-columns: repeat(3, 1fr);
+		width: 100%;
+		gap: 0.125rem;
+	}
+	.arrange {
+		grid-template-columns: 1fr;
+		width: 100%;
+		padding: 5px;
+	}
+	.titlebox1 {
+		grid-column: span 3;
+	}
+	.titlebox2 {
+		grid-column: span 1;
+	}
+.topleft {
+    top:0;
+    left:25%;
+}
+}
+
