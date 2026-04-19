@@ -4,6 +4,7 @@ body {
 	background:#E8E8E8;
 	font-family: 'Microsoft YaHei UI Light';
 	font-size:14px;
+	line-height:180%;
 	}
 .container {
 	display: grid;
@@ -137,7 +138,6 @@ img{
 	box-sizing: border-box;  
 	}
 .tincard {
-	line-height:120%;	
 	border: 1px solid #CCC;
 	border-radius: 10px;
 	margin:5px;	
