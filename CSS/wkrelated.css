@@ -55,7 +55,7 @@ body {
 	border-radius: 10px;
 	margin-top:10;
 	margin-bottom:10;
-	font-weight: bold;
+	/*font-weight: bold;*/
 	color:#0044AA;
 	}
 img{
@@ -68,7 +68,7 @@ img{
 	left:60px;
 }
 .titleimg{
-	max-width:240px;
+	max-width:180px;
 	height: auto;
 	top:40px;
 	left:180px;
