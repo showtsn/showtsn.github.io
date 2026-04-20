@@ -56,9 +56,17 @@ body {
 	border-radius: 10px;
 	margin-top:10;
 	margin-bottom:10;
-	/*font-weight: bold;*/
+	font-weight: bold;
 	color:#0044AA;
 	}
+table {
+    border-collapse: collapse;
+}
+table, td, th {
+    border: 1px solid black;
+	padding: 0 10px 0 10px;
+	line-height:150%;
+}
 img{
 	position:absolute;	
 }
@@ -112,7 +120,6 @@ img{
 	font-family: "Microsoft YaHei";
 	color:#432913;
 	font-size:1.2rem;
-	font-weight:bold;
 	height:40px;
 	background: linear-gradient(to right, #F8E7B6 20%, #CCFF66 50%, hsla(80,60%,80%, 0) 70%);
 	}
@@ -172,10 +179,14 @@ h4 {
 .ol-cn {list-style-type:cjk-ideographic;}	
         /* 响应式设计：当屏幕宽度小于768px时 */
 @media (max-width: 768px) {
-	.main{
+ .header, .nav, .main, .aside, .footer {
+	font-weight: 400;
+	}
+
+.main{
 		flex-direction: column;
 		}
-	.aside {
+.aside {
 		width: 85vw;
 		}
 .container {
