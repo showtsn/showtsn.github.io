@@ -74,13 +74,13 @@ img{
 	max-width: 100px;
 	height: auto;
 	top:15px;
-	left:60px;
+	left:40px;
 }
 .titleimg{
 	max-width:180px;
 	height: auto;
 	top:40px;
-	left:180px;
+	left:170px;
 }
 .website {
 	background-color: white;
@@ -126,7 +126,7 @@ img{
 .vit {
 	display: grid;
 	grid-template-columns: 36px auto;
-	grid-template-rows: repeat(44,auto);
+	grid-template-rows: repeat(45,auto);
 	gap: 0;
 	box-sizing: border-box;
 	}
@@ -151,12 +151,12 @@ img{
 	box-sizing: border-box;  
 	padding:0 5px 0 10px;
 	}
+h3, h4{
+	margin: 5px 0;
+	padding:5px 0 5px 20px;
+	border-radius: 5px;
+}
 h3 {
-	display: flex; 
-	align-items: center;
-	margin:10px;
-	padding:8px;	
-	border-radius: 5px; 
 	color:#FFD700;
 	background: linear-gradient(to right, 
 		#054dc3 20%, 
@@ -165,10 +165,6 @@ h3 {
 		70%);
 	}
 h4 {
-	text-indent: 20px;
-	margin:0;
-	padding:5px;
-	border-radius: 5px;
 	color:#C00000;
 	background: linear-gradient(to right,
 		#B3E5A1 15%,
