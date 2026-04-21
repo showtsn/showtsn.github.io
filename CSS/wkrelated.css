@@ -22,7 +22,8 @@ body {
 	}
 .header {
 	grid-area: header;
-	background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+	background: linear-gradient(135deg, #000080 0%, #2575fc 100%);
+	/*background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);*/
 	color: white;
 		}
 .nav {
@@ -83,7 +84,7 @@ img{
 	left:170px;
 }
 .website {
-	background-color: white;
+	background-color:#0044AA;
 	padding: 0.3rem;
 	border-radius: 6px;
 	max-height: 1.4rem;
@@ -103,7 +104,7 @@ img{
 	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
 }
 .website a {
-	color:#0044AA;
+	color:white;
 	text-decoration: none;
 }
 .website-name {
@@ -130,13 +131,17 @@ img{
 	gap: 0;
 	box-sizing: border-box;
 	}
-.abox{
+.box{
 	display: flex;		
 	border: 1px solid #B2B2B2;
 	align-items: center;
 	margin: -0.4px;
 	padding:0 10px;
 	}
+.plus{
+	/*color:#2A6E3F;*/
+	background-color: #E2E7BF;
+}
 .smallcard {  
 	float: left;
 	/*border: 1px solid #0044AA;*/
@@ -176,9 +181,8 @@ h4 {
         /* 响应式设计：当屏幕宽度小于768px时 */
 @media (max-width: 768px) {
  .header, .nav, .main, .aside, .footer {
-	font-weight: 400;
+	/*font-weight: 400;*/
 	}
-
 .main{
 		flex-direction: column;
 		}
