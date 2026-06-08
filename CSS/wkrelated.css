@@ -191,6 +191,7 @@ h4 {
   }
   .container {
     grid-template-rows: 110px 100px auto 100px;
+	padding: 0;
   }
   .nav {
     grid-template-columns: repeat(3, 1fr);
