@@ -182,12 +182,12 @@ h4 {
 }
 
 /* 响应式布局（≤768px） */
-@media (max-width: 768px) {
+@media (max-width: 950px) {
   .main {
     flex-direction: column;
   }
   .aside {
-    width: 85vw;
+    width: 95vw;
   }
   .container {
     grid-template-rows: 110px 100px auto 100px;
