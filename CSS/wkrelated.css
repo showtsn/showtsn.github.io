@@ -69,14 +69,12 @@ img {
   position: absolute;
 }
 .xiaohuiimg {
-  max-width: 100px;
-  height: auto;
-  top: 15px;
+  height: 100px;
+  top: 8px;
   left: 40px;
 }
 .titleimg {
-  max-width: 180px;
-  height: auto;
+  height: 50px;
   top: 40px;
   left: 160px;
 }
@@ -191,7 +189,7 @@ h4 {
   }
   .container {
     grid-template-rows: 110px 100px auto 100px;
-	padding: 0;
+    padding: 0;
   }
   .nav {
     grid-template-columns: repeat(3, 1fr);
