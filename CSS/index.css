@@ -184,19 +184,16 @@ h4 {
 
   main {
     grid-template-columns: 1fr;
-    width: 100%;
-    padding: 0.2rem;
+    width: 100vw;
   }
 
-  .card {
-  width: 95vw;
-  margin: 5px 1vw;
-}
-  
   footer {
     height: 9.375rem;
     padding: 0.625rem 2rem;
   }
+.card {
+    width: 93vw;
+}
 
   .leftup {
     left: 22%;
@@ -204,6 +201,6 @@ h4 {
 
   .rightdn {
     top: 85%;
-    right: 20%;
+    right: 18%;
   }
 }
