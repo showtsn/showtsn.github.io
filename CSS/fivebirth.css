@@ -1,0 +1,109 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', Consolas;
+            color: #bf3010;
+            background: linear-gradient(145deg, #fff9f0 0%, #FFDCD7 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 245, 235, 0.7);
+            border-radius: 24px;
+            padding: 50px 60px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+            transition: all 0.3s ease;
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        #birth-msg {
+            color: #987763;
+            opacity: 0.8;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            border-bottom: 2px dashed #987763;
+            padding-bottom: 15px;
+        }
+
+        #main-msg {
+            font-size: 3rem;
+            font-weight: 700;
+            padding: 30px 20px;
+            border-radius: 16px;
+            transition: all 0.4s ease;
+            margin: 10px 0 20px 0;
+            min-height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main-msg { 
+            background: #feeadd;
+            border: 3px solid #aa4d2b;
+            box-shadow: 0 4px 15px rgba(26, 140, 216, 0.15);
+        }
+
+        .time-info {
+            font-family: Consolas;
+            color: #987763;
+            opacity: 0.8;
+            font-size: 1.1rem;
+            margin: 15px 0 25px 0;
+            padding: 10px 30px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+			line-height: 0.2rem;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .time-info span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .footer {
+            font-size: 1.1rem;
+			font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+            #display {
+                font-size: 2.8rem;
+                min-height: 100px;
+                padding: 20px 10px;
+            }
+            .time-info {
+                flex-direction: column;
+                line-height: 1rem;
+                gap: 10px;
+                align-items: center;
+            }
+        }
