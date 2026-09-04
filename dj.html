@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	  <link rel="stylesheet" href="./css/dj.css">
+    <title>倒计秒 · 精准秒表</title>
+ </head>
+<body>
+    <div class="countdown-card">
+        <div class="title"><span>⏰ 倒计秒 · 精准秒表 ⏳</span></div>
+
+        <!-- 时间显示 -->
+        <div class="display">
+            <div id="timer">00</div>
+        </div>
+
+        <!-- 控制按钮 -->
+        <div class="controls">
+            <button class="btn btn-start" id="startBtn">▶ 开始</button>
+            <button class="btn btn-pause" id="pauseBtn">⏸ 暂停</button>
+            <button class="btn btn-reset" id="resetBtn">⟳ 重置</button>
+        </div>
+
+        <!-- 进度条 -->
+        <div class="progress-track">
+            <div id="progress-bar" style="width: 0%;"></div>
+        </div>
+
+        <!-- 快速预设 (秒) -->
+        <div class="quick-set">
+            <span class="quick-btn" data-seconds="10">10s</span>
+            <span class="quick-btn" data-seconds="15">15s</span>
+			<span class="quick-btn" data-seconds="20">20s</span>
+            <span class="quick-btn" data-seconds="30">30s</span>
+            <span class="quick-btn" data-seconds="60">60s</span>
+            <span class="quick-btn" data-seconds="120">120s</span>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            "use strict";
+
+            // ----- DOM 元素 -----
+            const timerDisplay = document.getElementById('timer');
+            const startBtn = document.getElementById('startBtn');
+            const pauseBtn = document.getElementById('pauseBtn');
+            const resetBtn = document.getElementById('resetBtn');
+            const progressBar = document.getElementById('progress-bar');
+
+            // 快速预设按钮
+            const quickBtns = document.querySelectorAll('.quick-btn');
+
+            // ----- 状态变量 -----
+            let totalSeconds = 20;          // 初始默认 60 秒
+            let remainingSeconds = 20;      // 当前剩余秒数
+            let timerInterval = null;       // setInterval 句柄
+            let isRunning = false;
+
+            // 保存初始总秒数用于进度计算 (当手动set时更新)
+            let initialTotal = 20;
+
+            // ----- 辅助函数 -----
+
+            // 更新显示 (根据 remainingSeconds)
+            function updateDisplay() {
+                // 显示剩余秒数 (整数)
+                const secondsToShow = Math.floor(remainingSeconds);
+                // 补零，最多显示 4 位数字 (例如 9999)
+                const displayStr = String(secondsToShow).padStart(2, '0');
+                timerDisplay.textContent = displayStr;
+
+                // 更新进度条 (百分比)
+                if (initialTotal > 0) {
+                    const percent = (remainingSeconds / initialTotal) * 100;
+                    // 限制在 0~100 之间，避免显示异常
+                    const clampedPercent = Math.min(100, Math.max(0, percent));
+                    progressBar.style.width = clampedPercent + '%';
+                } else {
+                    progressBar.style.width = '0%';
+                }
+
+                // 如果剩余 0 秒，自动停止 (但保留显示)
+                if (remainingSeconds <= 0 && isRunning) {
+                    // 停止计时器
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                    isRunning = false;
+                    // 更新按钮状态 (视觉)
+                    startBtn.disabled = false;
+                    pauseBtn.disabled = true;
+                    // 确保显示 00
+                    timerDisplay.textContent = '00';
+                    progressBar.style.width = '0%';
+                }
+            }
+
+            // 停止计时器 (清除 interval)
+            function stopTimer() {
+                if (timerInterval) {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                }
+                isRunning = false;
+                // 按钮状态
+                startBtn.disabled = false;
+                pauseBtn.disabled = true;
+            }
+
+            // 开始倒计时 (从当前 remainingSeconds 开始)
+            function startTimer() {
+                // 如果已经运行或者剩余 <= 0，不能启动 (或者重置)
+                if (isRunning) return;
+                if (remainingSeconds <= 0) {
+                    // 如果剩余为0，重置到 initialTotal (但不自动开始)
+                    remainingSeconds = initialTotal;
+                    updateDisplay();
+                    return;
+                }
+
+                // 清除之前的 interval 以防重叠
+                if (timerInterval) {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                }
+
+                isRunning = true;
+                startBtn.disabled = true;
+                pauseBtn.disabled = false;
+
+                timerInterval = setInterval(() => {
+                    // 每次减少 1 秒
+                    remainingSeconds = Math.max(0, remainingSeconds - 1);
+                    updateDisplay();
+
+                    // 当剩余 0 秒时，自动停止
+                    if (remainingSeconds <= 0) {
+                        clearInterval(timerInterval);
+                        timerInterval = null;
+                        isRunning = false;
+                        startBtn.disabled = false;
+                        pauseBtn.disabled = true;
+                        // 确保显示 00
+                        timerDisplay.textContent = '00';
+                        progressBar.style.width = '0%';
+                    }
+                }, 1000);
+            }
+
+            // 重置倒计时 (停止并恢复为初始总秒数)
+            function resetTimer() {
+                // 停止计时
+                if (timerInterval) {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                }
+                isRunning = false;
+                // 重置剩余秒数为 initialTotal
+                remainingSeconds = initialTotal;
+                updateDisplay();
+                // 按钮状态
+                startBtn.disabled = false;
+                pauseBtn.disabled = true;
+            }
+
+            // 设置新的总秒数 (同时重置)
+            function setNewTotal(seconds) {
+                // 保证秒数为正整数，且不超过 9999 (显示限制)
+                let newTotal = Math.floor(Math.abs(seconds));
+                if (newTotal > 9999) newTotal = 9999;
+                if (newTotal < 1) newTotal = 1;   // 至少1秒
+
+                // 停止当前倒计时
+                if (timerInterval) {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                }
+                isRunning = false;
+
+                // 更新变量
+                totalSeconds = newTotal;
+                initialTotal = newTotal;
+                remainingSeconds = newTotal;
+
+                // 刷新显示
+                updateDisplay();
+
+                // 按钮状态
+                startBtn.disabled = false;
+                pauseBtn.disabled = true;
+            }
+
+            // 暂停功能 (实际上就是停止，但保留剩余秒数)
+            function pauseTimer() {
+                if (isRunning && timerInterval) {
+                    clearInterval(timerInterval);
+                    timerInterval = null;
+                    isRunning = false;
+                    startBtn.disabled = false;
+                    pauseBtn.disabled = true;
+                    // 显示保持不变 (updateDisplay 已经是最新)
+                } else {
+                    // 如果已经暂停，不执行任何操作
+                }
+            }
+
+            // ----- 事件绑定 -----
+
+            // 开始按钮
+            startBtn.addEventListener('click', function() {
+                // 如果剩余为0，则重置到初始值再开始 (让用户方便)
+                if (remainingSeconds <= 0) {
+                    remainingSeconds = initialTotal;
+                    updateDisplay();
+                }
+                startTimer();
+            });
+
+            // 暂停按钮
+            pauseBtn.addEventListener('click', pauseTimer);
+
+            // 重置按钮
+            resetBtn.addEventListener('click', resetTimer);
+
+            // 快速预设按钮
+            quickBtns.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    const secs = parseInt(this.dataset.seconds, 10);
+                    if (!isNaN(secs) && secs > 0) {
+                        setNewTotal(secs);
+                    }
+                });
+            });
+
+            // 额外小功能：点击“开始”如果剩余为0，自动重置为初始并开始？
+            // 但考虑到开始按钮逻辑已经包含: 如果剩余<=0, 重置并开始  (上面startBtn已处理)
+
+            // 初始化显示 (60秒)
+            (function init() {
+                // 默认 60 秒
+                totalSeconds = 20;
+                initialTotal = 20;
+                remainingSeconds = 20;
+                updateDisplay();
+                pauseBtn.disabled = true;   // 初始暂停不可用
+                startBtn.disabled = false;
+            })();
+
+            // 键盘快捷键 (可选) : 空格 开始/暂停
+            document.addEventListener('keydown', function(e) {
+                if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+                if (e.key === ' ' || e.key === 'Space') {
+                    e.preventDefault();
+                    if (isRunning) {
+                        pauseTimer();
+                    } else {
+                        // 如果剩余为0，重置到初始并开始 (与开始逻辑一致)
+                        if (remainingSeconds <= 0) {
+                            remainingSeconds = initialTotal;
+                            updateDisplay();
+                        }
+                        startTimer();
+                    }
+                }
+                // R键重置
+                if (e.key === 'r' || e.key === 'R') {
+                    resetTimer();
+                }
+            });
+
+            // 窗口失焦时保持计时器稳定（不做额外操作，因为setInterval独立）
+            // 用户可能调整时间，但不必处理
+
+            console.log('倒计秒已启动 · 点击预设快速设置');
+        })();
+    </script>
+</body>
+</html>

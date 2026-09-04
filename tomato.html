@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/tomato.css">
+  <title>番茄钟</title>
+</head>
+<body>
+<div class="app" id="app" data-theme="活力橙">
+  <!-- 番茄钟主模块 -->
+  <div class="pomodoro">
+    <div id="mode">🍅 专注中</div>
+    <div class="pomodoro__time" id="time">25:00</div>
+    <div class="pomodoro__btns">
+      <button id="startBtn">▶ 开始</button>
+      <button id="resetBtn">↺ 重置</button>
+      <button id="skipBtn">⏭ 跳过</button>
+    </div>
+    <div class="stat">今日完成番茄：<span id="count">0</span> 个</div>
+    <div class="settings">
+      专注 <input id="workInput" type="number" min="1" value="25"> 分 ·
+      休息 <input id="breakInput" type="number" min="1" value="5"> 分
+      <button id="saveBtn">💾 保存</button>
+    </div>
+    <div class="log" id="log">（番茄钟日志会显示在这里）</div>
+  </div>
+
+  <!-- 任务清单 -->
+  <div class="tasks">
+    <div class="tasks__add">
+      <input id="taskInput" placeholder="今天要做什么？">
+      <button id="taskAdd">＋ 添加</button>
+    </div>
+    <ul class="tasks__list" id="taskList"></ul>
+  </div>
+
+  <!-- 统计图表 -->
+  <div class="stats">
+    <div style="font-size:13px; color:var(--c-muted); margin-bottom:8px;">📊 最近 7 天完成番茄数</div>
+    <canvas id="chart" width="400" height="150"></canvas>
+  </div>
+
+  <!-- 主题选择 -->
+  <div class="theme-bar">
+    <button id="theme-活力橙">活力橙</button>
+    <button id="theme-暖阳橙">暖阳橙</button>
+    <button id="theme-落日橙">落日橙</button>
+    <button id="theme-深夜橙">深夜橙</button>
+  </div>
+</div>
+	<script src="./js/tomato.js"></script>
+</body>
+</html>
