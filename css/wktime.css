@@ -1,0 +1,123 @@
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #e8f0fe 0%, #d4e4f7 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 24px;
+            padding: 50px 60px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+            max-width: 700px;
+            width: 100%;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        h1 {
+            color: #1a2a3a;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        #daysCountdown {
+            color: #0044AA;
+            font-size: 1.1rem;
+			font-weight: 700;
+            margin-bottom: 30px;
+            border-bottom: 2px dashed #e8ecf0;
+            padding-bottom: 10px;
+        }
+
+        #actTime {
+            font-size: 3rem;
+            font-weight: 700;
+            padding: 30px 20px;
+            border-radius: 16px;
+            transition: all 0.4s ease;
+            margin: 10px 0 20px 0;
+            min-height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .doing {
+            color: #0044AA;
+            background: #e3f0ff;
+            border: 3px solid #1a8cd8;
+            box-shadow: 0 4px 15px rgba(26, 140, 216, 0.15);
+        }
+
+        .exercise {
+            color: #e85d3a;
+            background: #ffebe5;
+            border: 3px solid #e85d3a;
+            box-shadow: 0 4px 15px rgba(232, 93, 58, 0.15);
+        }
+
+        .waiting {
+            color: #5a6a7a;
+            background: #f0f2f5;
+            border: 3px solid #c8d0d8;
+        }
+
+        .time-info {
+            color: #4a5a6a;
+            font-size: 1.1rem;
+            margin: 15px 0 25px 0;
+            padding: 12px;
+            background: #f8fafc;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+			line-height: 0.3rem;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .time-info span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        #footer {
+            margin-top: 10px;
+            color: #0044AA;
+            font-size: 1.1rem;
+			font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+
+        /* 响应式 */
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+            #display {
+                font-size: 2.8rem;
+                min-height: 100px;
+                padding: 20px 10px;
+            }
+            .time-info {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+        }

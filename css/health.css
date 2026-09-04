@@ -1,0 +1,58 @@
+        .magazine-layout {
+            display: grid;
+            /* 定义一个6列的灵活网格，最小高度50px,最大不限 */
+            grid-template-columns: repeat(6, 1fr);
+            grid-auto-rows: minmax(50px, auto);
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+.LR{
+	display: flex;
+	align-items: center;
+}
+.circleimg{
+	max-width:52px;
+	height: auto;
+}
+.pic-4{
+	max-width:750px;
+	height: auto;
+}
+hr {
+	border-top: 1px solid orange;
+} 
+        .soso {
+			border: 1px solid #0044AA;
+        }
+        .wide {
+            grid-column: span 2;
+        }
+        .wider {
+            grid-column: span 4;
+        }
+        .widest {
+            grid-column: span 6;
+        }
+        .tall {
+            grid-row: span 2;
+        }
+	    .taller {
+            grid-row: span 3;
+        }
+        /* 通用项目样式 */
+        .magazine-layout > div {
+            padding: 20px;
+			border-radius: 8px;
+			font-family: "Microsoft YaHei UI Light";
+			font-size: 14px;
+			font-weight: bold;
+			color:#0044AA;
+            /*display: flex;*/
+            align-items: center;
+            /*justify-content: center;*/
+			box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+			line-height: 1.5rem;
+			letter-spacing:1px;
+        }    
