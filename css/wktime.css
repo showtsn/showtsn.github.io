@@ -115,6 +115,11 @@
                 min-height: 100px;
                 padding: 20px 10px;
             }
+        #actTime {
+            font-size: 2rem;
+            font-weight: 700;
+            padding: 30px 20px;
+        }
             .time-info {
 				padding: 14px 50px;
 				line-height: 3rem;
