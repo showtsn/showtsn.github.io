@@ -116,6 +116,8 @@
                 padding: 20px 10px;
             }
             .time-info {
+				padding: 14px 50px;
+				line-height: 3rem;
                 flex-direction: column;
                 gap: 10px;
                 align-items: center;
