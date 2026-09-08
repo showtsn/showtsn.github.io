@@ -36,7 +36,6 @@
 
         #birth-msg {
             color: #987763;
-            /* opacity: 0.8; */
             font-size: 1.1rem;
             margin-bottom: 30px;
             border-bottom: 2px dashed #987763;
@@ -65,7 +64,6 @@
         .time-info {
             font-family: Consolas;
             color: #987763;
-            /* opacity: 0.8; */
             font-size: 1.1rem;
             margin: 15px 0 25px 0;
             padding: 10px 30px;
@@ -99,6 +97,9 @@
             .container {
                 padding: 30px 20px;
             }
+        h1 {
+            letter-spacing: 0;
+        }
             #display {
                 font-size: 2.8rem;
                 min-height: 100px;
