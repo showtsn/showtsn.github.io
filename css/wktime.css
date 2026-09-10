@@ -44,7 +44,7 @@
         }
 
         #actTime {
-            font-size: 3rem;
+            font-size: clamp(2rem, 7vw, 3rem);
             font-weight: 700;
             padding: 30px 20px;
             border-radius: 16px;
@@ -116,7 +116,7 @@
                 padding: 20px 10px;
             }
         #actTime {
-            font-size: 2rem;
+            font-size: clamp(2rem, 7vw, 2.5rem);
             font-weight: 700;
             padding: 30px 20px;
         }
